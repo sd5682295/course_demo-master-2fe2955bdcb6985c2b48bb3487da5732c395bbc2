@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	{% load static %}
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>每颗豆创客博客</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<!-- <link href='https://makerbean.oss-cn-beijing.aliyuncs.com/css/bootstrap.min.css' rel="stylesheet"> -->
+		<link href='/static/blog/vendor/bootstrap/css/bootstrap.min.css' rel="stylesheet">
+		<link href="{% static 'clean-blog.min.css' %}" rel="stylesheet">
+	</head>
+	<body>
+		<h1>{{title}}</h1>
+		<p>{{welcome_line}}</p>
+		{% if request.user.is_authenticated %}
+			<p id="welcome-line">欢迎来到每颗豆创客学院</p>
+		{% else %}
+			<p id="welcome-line">你还没有登录！</p>
+		{% endif %}
+
+		<a class="link" href="{{link_dict.makerbean}}">每颗豆官网</a>
+		<a class="link" href="{{link_dict.youdao}}">有道精品课官网</a>
+		<ul>
+			{% for language in language_list %}
+				<li>{{forloop.counter}}: {{language}}</li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>
